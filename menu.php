@@ -46,11 +46,32 @@ class Menu {
   public function getTotalPrice() {
     return $this->getTaxIncludedPrice()*$this->orderCount;
   }
+
+  // getReviewsメソッドを定義
+  public function getReviews($reviews) {
+    $reviewsForMenu = array();
+    foreach ($reviews as $review) {
+      if ($review->getMenuName() == $this->name) {
+        $reviewsForMenu[] = $review;
+      }
+    }
+    return $reviewsForMenu;
+  }
   
   // getCountというクラスメソッドを追加してください
   public static function getCount() {
     return self::$count;
   }
+
+  // findByNameというクラスメソッドを定義してください
+  public static function findByName($menus, $name) {
+    foreach ($menus as $menu) {
+      if ($menu->getName() == $name) {
+        return $menu;
+      }
+    }
+  }
+
 
 }
 ?>

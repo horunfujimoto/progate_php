@@ -22,7 +22,12 @@
             <!-- imageプロパティのゲッター -->
             <img src="<?php echo $menu->getImage() ?>" class="menu-item-image">
             <!-- nameプロパティのゲッター -->
-            <h3 class="menu-item-name"><?php echo $menu->getName() ?></h3>
+            <h3 class="menu-item-name">
+              <!-- show.phpへのジャンプ -->
+              <a href="show.php?name=<?php echo $menu->getName() ?>">
+                <?php echo $menu->getName() ?>
+              </a>
+            </h3>
             <?php if ($menu instanceof Drink): ?>
             <!-- $menuのゲッターを用いてtypeプロパティを表示 -->
               <p class="menu-item-type"><?php echo $menu->getType() ?></p>

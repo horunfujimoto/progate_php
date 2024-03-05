@@ -2,16 +2,20 @@
 class Menu {
   // name, price, imageプロパティのアクセス権をprivate
    
-  private $name;
-  private $price;
-  private $image;
-  //注文数初期値は0で登録
-  private $orderCount=0;
+  protected $name;
+  protected $price;
+  protected $image;
+  // 注文数初期値は0で登録
+  protected $orderCount=0;
+  // menu数初期値は0で登録
+  protected static $count=0;
   
   public function __construct($name, $price, $image) {
     $this->name = $name;
     $this->price = $price;
     $this->image = $image;
+    // クラスプロパティcountの値に1を足す
+    self::$count++;
   }
   
   // getNameメソッドを定義
@@ -43,5 +47,10 @@ class Menu {
     return $this->getTaxIncludedPrice()*$this->orderCount;
   }
   
+  // getCountというクラスメソッドを追加してください
+  public static function getCount() {
+    return self::$count;
+  }
+
 }
 ?>
